@@ -1,55 +1,117 @@
-# README Template
+# Clothing Reviews Analysis and Recommendation Prediction Pipeline
 
-Below is a template provided for use when building your README file for students.
+This project implements a machine learning pipeline to predict whether customers recommend clothing items based on their reviews. The pipeline handles multiple types of data including numerical, categorical, and text features.
 
-# Project Title
+## Project Overview
 
-Project description goes here.
+The goal is to create a robust machine learning pipeline that can predict product recommendations based on customer reviews and other features. The pipeline processes different types of data and combines them into a unified model.
 
-## Getting Started
+## Features
 
-Instructions for how to get a copy of the project running on your local machine.
+The dataset includes the following features:
 
-### Dependencies
+- **Numerical Features**:
+  - Age: Reviewer's age
+  - Positive Feedback Count: Number of other customers who found the review positive
 
-```
-Examples here
-```
+- **Categorical Features**:
+  - Division Name: High-level product division
+  - Department Name: Product department name
+  - Class Name: Product class name
 
-### Installation
+- **Text Features**:
+  - Title: Review title
+  - Review Text: Main review content
 
-Step by step explanation of how to get a dev environment running.
+- **Target Variable**:
+  - Recommended IND: Binary variable (1 = recommended, 0 = not recommended)
 
-List out the steps
-
-```
-Give an example here
-```
-
-## Testing
-
-Explain the steps needed to run any automated tests
-
-### Break Down Tests
-
-Explain what each test does and why
+## Project Structure
 
 ```
-Examples here
+.
+├── data/
+│   └── reviews.csv         # Dataset file
+├── starter/
+│   ├── starter.py         # Main implementation file
+│   └── starter.ipynb      # Jupyter notebook version
+└── README.md              # Project documentation
 ```
 
-## Project Instructions
+## Implementation Details
 
-This section should contain all the student deliverables for this project.
+### Data Processing
+- Handles missing values
+- Processes numerical, categorical, and text features
+- Implements custom text transformers for feature extraction
 
-## Built With
+### Feature Engineering
+- Numerical features: Standard scaling
+- Categorical features: One-hot encoding
+- Text features: Custom text transformer with statistical features
 
-* [Item1](www.item1.com) - Description of item
-* [Item2](www.item2.com) - Description of item
-* [Item3](www.item3.com) - Description of item
+### Model Pipeline
+- Combines preprocessing steps for different feature types
+- Implements RandomForestClassifier with optimized hyperparameters
+- Uses Optuna for hyperparameter optimization
 
-Include all items used to build project.
+### Performance Optimization
+- Parallel processing for text analysis
+- Optimized CPU utilization
+- Efficient memory management
+
+## Usage
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Run the pipeline:
+```bash
+python starter/starter.py
+```
+
+Or use the Jupyter notebook:
+```bash
+jupyter notebook starter/starter.ipynb
+```
+
+## Model Evaluation
+
+The pipeline includes comprehensive evaluation metrics:
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC AUC
+
+## Performance Optimization
+
+The implementation includes several optimizations:
+- Parallel processing for text analysis
+- Efficient memory management
+- Optimized CPU utilization
+- Early stopping for model training
+
+## Dependencies
+
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- optuna
+- joblib
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 
-[License](LICENSE.txt)
+This project is licensed under the MIT License - see the LICENSE file for details.
